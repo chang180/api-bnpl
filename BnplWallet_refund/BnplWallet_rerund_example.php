@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATM 轉帳-幕後取號 API 範例程式</title>
+    <title>BNPL 先買後付取消交易/退款 API 範例程式</title>
 </head>
 
 <body>
-    <h1>ATM 轉帳-幕後取號 API 範例</h1>
-    <form action="vacc_api.php" method="post">
+    <h1>BNPL 先買後付取消交易/退款 API 範例</h1>
+    <form action="creditcard_close_api.php" method="post">
         <fieldset>
             <legend>參數輸入</legend>
             <table border="1">
                 <tr>
                     <td>API網址：</td>
-                    <td><input name="url" value="https://ccore.newebpay.com/API/gateway/vacc" size="60" required><span style="color:red;">※必填</span></td>
+                    <td><input name="url" value="https://ccore.newebpay.com/API/BnplWallet/refund" size="60" required><span style="color:red;">※必填</span></td>
                 </tr>
                 <tr>
                     <td>商店代號:</td>
@@ -35,41 +35,36 @@
                     <td><input name="RespondType" value="JSON" maxlength="5" required><span style="color:red;">※必填</span></td>
                 </tr>
                 <tr>
-                    <td>版本號:</td>
+                    <td>串接程式版本:</td>
                     <td><input name="Version" value="1.0" maxlength="3"><span style="color:red;">※必填</span></td>
                 </tr>
                 <tr>
-                    <td>TimeStamp:</td>
+                    <td>授權金額:</td>
+                    <td><input type="number" name="Amt" max="9999999999"><span style="color:red;">※必填</span></td>
+                </tr>
+                <tr>
+                    <td>時間戳記:</td>
                     <td><input name="TimeStamp" value="<?= time(); ?>" maxlength="50" required readonly><span style="color:red;">※必填</span></td>
                 </tr>
                 <tr>
-                    <td>金融機構(選填):</td>
-                    <td><input name="BankType" maxlength="10"></td>
-                </tr>
-                <tr>
-                    <td>交易完成回傳網址(選填):</td>
-                    <td><input name="NotifyURL" placeholder="您的網址/notify_url.php" maxlength="50"></td>
-                </tr>
-                
-                <tr>
                     <td>商店訂單編號:</td>
-                    <td><input name="MerchantOrderNo" value="example<?= time(); ?>" maxlength="30" required><span style="color:red;">※必填</span></td>
+                    <td><input name="MerchantOrderNo" maxlength="30"><span style="color:red;">※與藍新金流交易序號二擇一填入</span></td>
                 </tr>
                 <tr>
-                    <td>訂單金額:</td>
-                    <td><input type="number" name="Amt" value="88" max="9999999999"><span style="color:red;">※必填</span></td>
+                    <td>藍新金流交易序號:</td>
+                    <td><input name="TradeNo" maxlength="17"><span style="color:red;">※與商店訂單編號二擇一填入</span></td>
                 </tr>
                 <tr>
-                    <td>商品描述 :</td>
-                    <td><input name="ProdDesc" value="商品一批" maxlength="50"><span style="color:red;">※必填</span></td>
+                    <td>單號類別</td>
+                    <td><input type="number" name="IndexType" max="9"><span style="color:red;">※必填</span></td>
                 </tr>
                 <tr>
-                    <td>付款人電子信箱:</td>
-                    <td><input name="PayerEmail" type="email" maxlength="50" required><span style="color:red;">※必填</span></td>
+                    <td>請款或退款</td>
+                    <td><input type="number" name="CloseType" max="9"><span style="color:red;">※必填</span></td>
                 </tr>
                 <tr>
-                    <td>繳費截止日期(選填)</td>
-                    <td><input name="ExpireDate" type="date"></td>
+                    <td>取消請款或退款(選填)</td>
+                    <td><input type="number" name="Cancel" max="9"></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center"><input type="submit" value="參數轉換"></td>
@@ -77,6 +72,7 @@
             </table>
         </fieldset>
     </form>
+
 </body>
 
 </html>

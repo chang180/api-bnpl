@@ -1,16 +1,11 @@
 <?php
 //串接網址
 $api_url = $_POST['url'];
-
-//POST參數
-$post_str = [
-    'MerchantID_' => $_POST['MerchantID_'],
-    'PostData_' => $_POST['PostData_'],
-];
+unset($_POST['url']);
 
 // curl 結果
-$result = curl_(http_build_query($post_str), $api_url);
-$result = json_decode($result['web_info'], true);
+$result = curl_($_POST, $api_url);
+$output = json_decode($result['web_info'], true);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,10 +70,10 @@ function curl_($curl_str = '', $curl_url)
     <fieldset>
         <legend>API回應訊息:：</legend>
         <pre>
-            <?php print_r($result); ?>
+            <?php print_r($output); ?>
         </pre>
     </fieldset>
-    <a href="creditcard_close_example.php">回本頁</a>
+    <a href="BnplWallet_refund_example.php">回本頁</a>
 </body>
 
 </html>

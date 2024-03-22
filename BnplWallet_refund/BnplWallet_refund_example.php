@@ -10,7 +10,7 @@
 
 <body>
     <h1>BNPL 先買後付取消交易/退款 API 範例</h1>
-    <form action="creditcard_close_api.php" method="post">
+    <form action="BnplWallet_refund_api.php" method="post">
         <fieldset>
             <legend>參數輸入</legend>
             <table border="1">
@@ -20,7 +20,7 @@
                 </tr>
                 <tr>
                     <td>商店代號:</td>
-                    <td><input name="MerchantID_" maxlength="15" required><span style="color:red;">※必填</span></td>
+                    <td><input name="UID_" maxlength="15" required><span style="color:red;">※必填</span></td>
                 </tr>
                 <tr>
                     <td>key:</td>
@@ -39,32 +39,19 @@
                     <td><input name="Version" value="1.0" maxlength="3"><span style="color:red;">※必填</span></td>
                 </tr>
                 <tr>
-                    <td>授權金額:</td>
+                    <td>取消交易/退款金額:</td>
                     <td><input type="number" name="Amt" max="9999999999"><span style="color:red;">※必填</span></td>
                 </tr>
                 <tr>
                     <td>時間戳記:</td>
-                    <td><input name="TimeStamp" value="<?= time(); ?>" maxlength="50" required readonly><span style="color:red;">※必填</span></td>
+                    <td><input name="TimeStamp" value="<?= time(); ?>" maxlength="50" required><span style="color:red;">※必填</span></td>
                 </tr>
                 <tr>
                     <td>商店訂單編號:</td>
-                    <td><input name="MerchantOrderNo" maxlength="30"><span style="color:red;">※與藍新金流交易序號二擇一填入</span></td>
+                    <td><input name="MerchantOrderNo" maxlength="30"><span style="color:red;">※必填</span></td>
                 </tr>
-                <tr>
-                    <td>藍新金流交易序號:</td>
-                    <td><input name="TradeNo" maxlength="17"><span style="color:red;">※與商店訂單編號二擇一填入</span></td>
-                </tr>
-                <tr>
-                    <td>單號類別</td>
-                    <td><input type="number" name="IndexType" max="9"><span style="color:red;">※必填</span></td>
-                </tr>
-                <tr>
-                    <td>請款或退款</td>
-                    <td><input type="number" name="CloseType" max="9"><span style="color:red;">※必填</span></td>
-                </tr>
-                <tr>
-                    <td>取消請款或退款(選填)</td>
-                    <td><input type="number" name="Cancel" max="9"></td>
+                    <td>付款方式</td>
+                    <td><input type="text" name="PaymentType" value="FULA"><span style="color:red;">※必填</span></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center"><input type="submit" value="參數轉換"></td>

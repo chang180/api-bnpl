@@ -14,7 +14,7 @@
         <li>
             <a href="./BnplWallet_refund/BnplWallet_refund_example.php">取消交易/退款</a>
         </li>
-        <li>example1711011346
+        <li>
             <a href="./BnplWallet_request/Bnpl_example.php">幕後支付</a>
         </li>
     </ul>

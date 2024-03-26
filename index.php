@@ -12,10 +12,16 @@
     <h1>藍新金流 BNPL先買後付程式範例</h1>
     <ul>
         <li>
+            <a href="./tradeEstimate/tradeEstimate_example.php">幕後試算</a>
+        </li>
+        <li>
+            <a href="./BnplWallet_request/BnplWallet_Request_example.php">幕後支付</a>
+        </li>
+        <li>
             <a href="./BnplWallet_refund/BnplWallet_refund_example.php">取消交易/退款</a>
         </li>
         <li>
-            <a href="./BnplWallet_request/Bnpl_example.php">幕後支付</a>
+            <a href="./query_trade_info/query_trade_info_example.php">查詢單次交易</a>
         </li>
     </ul>
     <a href="api-bnpl.zip" download>下載檔案</a>
